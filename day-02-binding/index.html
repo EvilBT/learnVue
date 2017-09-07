@@ -1,0 +1,50 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div id="root">
+            <span :title="title">
+                停留片刻查看动态消息
+            </span>
+
+            <ul>
+                <li v-for="item in items" v-if="item.show">
+                    {{item.msg}}
+                </li>
+            </ul>
+
+            <p>{{ message }}</p>
+            <button v-on:click="reverse">逆转消息</button>
+
+            <p>{{ modelData }}</p>
+            <input v-model="modelData">
+        </div>
+                
+        <script src="../vue.js"></script>
+        <!--<script src="https://unpkg.com/vue"></script>-->
+        <script>
+            var app = new Vue({
+                el: "#root",
+                data: {
+                    modelData: '请输入消息',
+                    message: 'Hello World!',
+                    title: '现在时间为' + new Date().toLocaleString(),
+                    items: [
+                        {msg: 'Sherlock',show: true},
+                        {msg: 'Tina',show: false},
+                        {msg: 'Sherry',show: true},
+                        {msg: 'Aini',show: false},
+                        {msg: 'Nokia',show: true}
+                    ]
+                },
+                methods: {
+                    reverse: function(){
+                        this.message = this.message.split('').reverse().join('')        
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
+
